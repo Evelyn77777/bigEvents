@@ -83,6 +83,15 @@
           },
           dataType: 'json'
         })
+
+        //更改图片信息,本地图片预览
+        //change事件，只有在值发生改变的时候会触发，避免选择一样的图片然后渲染页面，降低性能,
+        $('#exampleInputFile').change(function(){
+            var file=this.files[0];
+            var url=URL.createObjectURL(file);
+            //把这个临时地址设置给IMG
+            $(this).prev().attr('src',url)
+        })
     })
     
     </script>
