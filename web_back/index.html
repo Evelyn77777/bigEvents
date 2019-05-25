@@ -217,24 +217,10 @@
     */
   $(function() {
     // 退出按钮的 点击事件 弹框提示
-    $('.icon-tuichu')
-      .parent()
-      .click(function() {
-        // 弹框
-        $('#myModal').modal()
-      })
-
-    // 点击确认
-    $('.btn-leave').click(function() {
-      $.ajax({
-        url: 'https://autumnfish.cn/big/admin/logout',
-        type: 'post',
-        success: function(backData) {
-          //   console.log(backData)
-          if (backData.code == 200) {
-            window.location.href = './login.html'
-          }
-        }
+    $('.icon-tuichu').parent().click(function(){
+      $('#myModal').modal();
+      $('.btn-leave').click(function(){
+        window.location.href='./login.html'
       })
     })
   })
