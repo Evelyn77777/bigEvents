@@ -54,12 +54,13 @@
             </button>
             <h4 class="modal-title" id="myModalLabel">提示框!!</h4>
           </div>
-          <div class="modal-body my-modal-body"></div>
+          <div class="modal-body my-modal-body">
+            请输入用户名或者密码！
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
               狠心关闭
             </button>
-            <button type="button" class="btn btn-primary">残忍确认</button>
           </div>
         </div>
       </div>
@@ -91,7 +92,9 @@
         var name=$('.input_txt').val().trim();
         var password=$('.input_pass').val().trim();
         if(name==''||password==''){
-          alert('请输入用户名或者密码');
+          // alert('请输入用户名或者密码');
+          $('#myModal').modal();
+          $('.my-modal-body').text('请输入用户名和密码！')
           return
         }else{
           $.ajax({
@@ -106,7 +109,9 @@
            console.log(backData);
            
            if(backData.code==400){
-             alert('请输入用户名或者密码');
+            //  alert('请输入用户名或者密码');
+            $('#myModal').modal();
+            $('.my-modal-body').text('请输入正确的用户名或者密码！')
              return
            }else if(backData.code==200){
              window.location.href='./index.html'
