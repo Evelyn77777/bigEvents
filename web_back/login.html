@@ -85,44 +85,36 @@
             2. 失败
                 1. 提示用户
     */
-  $(function() {
-    $('.input_sub').click(function(e) {
-      // 阻止默认行为
-      e.preventDefault()
-      // 获取用户名和密码
-      var user_name = $('.input_txt')
-        .val()
-        .trim()
-      var password = $('.input_pass')
-        .val()
-        .trim()
-      if (user_name == '' || password == '') {
-        // alert('哥们，写点啥呗！！')
-        // 修改内容
-        $('.my-modal-body').text('记得输入用户名和密码哦！！')
-        $('#myModal').modal()
-        return
-      }
-      // ajax
-      $.ajax({
-        url: 'https://autumnfish.cn/big/admin/login',
-        type: 'post',
-        data: {
-          user_name: user_name,
-          password: password
-        },
-        success: function(backData) {
-          //   console.log(backData)
-          if (backData.code == 400) {
-            // alert('哥们，用户名或密码错了哦，你是机器人吗？')
-            $('.my-modal-body').text('哥们，用户名或密码错了哦！')
-            $('#myModal').modal()
-          } else if (backData.code == 200) {
-            // 去首页
-            window.location.href = './index.html'
-          }
+    $(function(){
+      $('.input_sub').click(function(e){
+        e.preventDefault();
+        var name=$('.input_txt').val().trim();
+        var password=$('.input_pass').val().trim();
+        if(name==''||password==''){
+          alert('请输入用户名或者密码');
+          return
+        }else{
+          $.ajax({
+           url:'https://autumnfish.cn/big/admin/login',//地址
+          data:{
+            user_name:name,
+            password:password
+          },//数据可以写对象
+            type:'post',//请求的方法
+          success:function(backData){
+           //回调函数
+           console.log(backData);
+           
+           if(backData.code==400){
+             alert('请输入用户名或者密码');
+             return
+           }else if(backData.code==200){
+             window.location.href='./index.html'
+           }
+            },
+            dataType: 'json'
+          })
         }
       })
     })
-  })
 </script>
