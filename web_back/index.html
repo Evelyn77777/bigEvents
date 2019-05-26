@@ -245,7 +245,6 @@
       type:'get',//请求的方法
     success:function(backData){
      //回调函数
-     console.log(backData);
      //左边
      $('.user_info img').attr('src',backData.data.user_pic);
      $('.user_info i').html(backData.data.nickname)

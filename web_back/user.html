@@ -1,123 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>文章列表</title>
-    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/iconfont.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/iconfont.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <script src="js/jquery-1.12.4.min.js"></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <div class="container-fluid">
-        <div class="common_title">
-            用户信息修改
-        </div>
-        <div class="container-fluid common_con">
-            <form class="form-horizontal article_form">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">用户名称：</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control user_name" name="username" id="inputEmail3" value="李思思">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">昵称：</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control nickname" name="nickname" id="inputEmail3" value="思思">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">邮箱：</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control email"name="email" id="inputEmail3" value="lisisi@126.com">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">用户图标：</label>
-                    <div class="col-sm-10">
-                        <img src="images/2.jpg" alt="" class="user_pic">
-                        <input type="file" id="exampleInputFile" name="user_pic">
-                    </div>
-                </div>
+      <div class="common_title">
+        用户信息修改
+      </div>
+      <div class="container-fluid common_con">
+        <form class="form-horizontal article_form">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"
+              >用户名称：</label
+            >
+            <div class="col-sm-4">
+              <input
+                type="text"
+                class="form-control username"
+                name="username"
+                id="user_name"
+                value="李思思"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"
+              >昵称：</label
+            >
+            <div class="col-sm-4">
+              <input
+                type="text"
+                class="form-control nickname"
+                name="nickname"
+                value="思思"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"
+              >邮箱：</label
+            >
+            <div class="col-sm-4">
+              <input
+                type="text"
+                class="form-control email"
+                name="email"
+                value="lisisi@126.com"
+              />
+            </div>
+          </div>
 
-                <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">密码：</label>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control password"name="password" id="inputEmail3" value="12345678">
-                        </div>
-                    </div>
-               
-    
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-success">修改</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label"
+              >用户图标：</label
+            >
+            <div class="col-sm-10">
+              <img src="images/2.jpg" alt="" class="user_pic" />
+              <input type="file" id="exampleInputFile" name="user_pic" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"
+              >密码：</label
+            >
+            <div class="col-sm-4">
+              <input
+                type="password"
+                class="form-control password"
+                name="password"
+                value="12345678"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success">修改</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
-
     <script>
-    $(function(){
+      $(function() {
         //获取用户的详细数据添加到个人中心
         $.ajax({
-         url:'https://autumnfish.cn/big32/admin/userinfo_get',//地址
-        data:{},//数据可以写对象
-          type:'get',//请求的方法
-        success:function(backData){
-         //回调函数
-         console.log(backData);
-         for (const key in backData.data) {
-             $('.input'+[key]).val(backData.data[key])
-         }
-         $('.user_pic').attr('src',backData.data.user_pic)
-          },
-          dataType: 'json'
-        })
+          url: "https://autumnfish.cn/big32/admin/userinfo_get", //地址
+          type: "get", //请求的方法
+          success: function(backData) {
+            //回调函数
+            console.log(backData);
+            for (const key in backData.data) {
+                
+              $("input." + key).val(backData.data[key]);
+            }
+            $(".user_pic").attr("src", backData.data.user_pic);
+          }
+          //   dataType: 'json'
+        });
 
         //更改图片信息,本地图片预览
         //change事件，只有在值发生改变的时候会触发，避免选择一样的图片然后渲染页面，降低性能,
-        $('#exampleInputFile').change(function(){
-            var file=this.files[0];
-            var url=URL.createObjectURL(file);
-            //把这个临时地址设置给IMG
-            $(this).prev().attr('src',url)
-        })
+        $("#exampleInputFile").change(function() {
+          var file = this.files[0];
+          var url = URL.createObjectURL(file);
+          //把这个临时地址设置给IMG
+          $(this)
+            .prev()
+            .attr("src", url);
+        });
 
         //保存修改的个人信息内容，然后上传到服务器
-        $('.btn-success').click(function(e){
-            //因为这个是submit，所以要阻止默认事件
-            e.preventDefault();
-            //先实例化formData
-            var formData=new FormData($('form')[0])
-            $.ajax({
-             url:'https://autumnfish.cn/big32/admin/userinfo_edit',//地址
-            data:formData,
-            contentType:false,
-            processData:false,
+        $(".btn-success").click(function(e) {
+          //因为这个是submit，所以要阻止默认事件
+          e.preventDefault();
+          //先实例化formData
+          var formData = new FormData($("form")[0]);
+          console.log(formData);
+
+          $.ajax({
+            url: "https://autumnfish.cn/big32/admin/userinfo_edit", //地址
+            data: formData,
+            //不设置请求头
+            contentType: false,
+            //不把数据变成字符串
+            processData: false,
             //数据可以写对象
-              type:'post',//请求的方法
-            success:function(backData){
-             //回调函数
-             console.log(backData);
-             
-              },
-              dataType: 'json'
-            })
-        })
-    })
-    
+            type: "post", //请求的方法
+            success: function(backData) {
+              //回调函数
+              console.log(backData);
+            }
+            //   dataType: 'json'
+          });
+        });
+      });
     </script>
-
-</body>
-
+  </body>
 </html>
