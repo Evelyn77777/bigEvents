@@ -210,6 +210,7 @@
     <script>
       $(function() {
         function getData(){
+            //进入页面调取数据返回页面
             $.ajax({
           url: "https://autumnfish.cn/big32/admin/category_search", //地址
           data: {}, //数据可以写对象
@@ -226,11 +227,13 @@
         }
         
 
-        getData()
+        getData()//调用函数
         $('#model_add').click(function(){
+            //绑定点击事件，把获取的信息发送给服务器
             $.ajax({
              url:'https://autumnfish.cn/big32/admin/category_add',//地址
             data:{
+                //数据是要获取输入框的内容
                 name:$('.name').val(),
                 slug:$('.slug').val()
             },//数据可以写对象
@@ -239,12 +242,29 @@
              //回调函数
              console.log(backData);
              $("#addModal").modal("hide");
-             getData()
+             getData()//调用服务器的数据
               },
               dataType: 'json'
             })
 
         })
+
+        // //给删除按钮绑定事件
+        // $('.btn-xs').click(function(){
+        //     $.ajax({
+        //      url:'https://autumnfish.cn/big/admin/·',//地址
+        //     // data:{
+        //     //     id:
+        //     // },//数据可以写对象
+        //       type:'post',//请求的方法
+        //     success:function(backData){
+        //      //回调函数
+        //      console.log(backData);
+             
+        //       },
+        //       dataType: 'json'
+        //     })
+        // })
       });
     </script>
   </body>
